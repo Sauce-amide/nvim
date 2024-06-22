@@ -19,7 +19,7 @@ return {
       "<space>tw",
       "<cmd>Translate ZH -output=split<CR>",
       desc = "Translate word to Chinese",
-      mode = { "n", "i", "x" },
+      mode = { "n", "x" },
     },
   },
 }

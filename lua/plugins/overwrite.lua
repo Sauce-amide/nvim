@@ -8,44 +8,6 @@ return {
       end
     end,
   },
-
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    config = function()
-      require("neo-tree").setup({
-        window = {
-          width = 35,
-          mappings = {
-            -- ['e'] = function() vim.api.nvim_exec('Neotree focus filesystem left', true) end,
-            -- ['b'] = function() vim.api.nvim_exec('Neotree focus buffers left', true) end,
-            -- ['g'] = function() vim.api.nvim_exec('Neotree focus git_status left', true) end,
-            ["o"] = "open",
-            ["oc"] = "none",
-            ["od"] = "none",
-            ["og"] = "none",
-            ["om"] = "none",
-            ["on"] = "none",
-            ["os"] = "none",
-            ["ot"] = "none",
-            -- ["o"] = { "show_help", nowait = false, config = { title = "Order by", prefix_key = "o" } },
-            ["s"] = { "show_help", nowait = false, config = { title = "Order by", prefix_key = "o" } },
-            ["sc"] = { "order_by_created", nowait = false },
-            ["sd"] = { "order_by_diagnostics", nowait = false },
-            ["sg"] = { "order_by_git_status", nowait = false },
-            ["sm"] = { "order_by_modified", nowait = false },
-            ["sn"] = { "order_by_name", nowait = false },
-            ["ss"] = { "order_by_size", nowait = false },
-            ["st"] = { "order_by_type", nowait = false },
-            -- ["s"] = "open_vsplit",
-            ["|"] = "open_vsplit",
-            -- ["S"] = "open_split",
-            ["-"] = "open_split",
-          },
-        },
-      })
-    end,
-  },
-
   {
     "folke/todo-comments.nvim",
     -- stylua: ignore
