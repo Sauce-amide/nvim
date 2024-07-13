@@ -29,3 +29,28 @@ vim.keymap.set("n", "<Leader>mr", function()
 end)
 vim.keymap.set("n", "<Leader>ms", MiniMap.toggle_side)
 vim.keymap.set("n", "<Leader>mt", MiniMap.toggle)
+
+-- 按行格式化
+function FormatCurrentLine()
+  local pos = vim.api.nvim_win_get_cursor(0)
+  require("conform").format({
+    range = {
+      start = { pos[1], 0 },
+      ["end"] = { pos[1] + 1, 0 },
+    },
+  })
+end
+
+function FormatSelection()
+  local start_pos = vim.fn.getpos("'<")
+  local end_pos = vim.fn.getpos("'>")
+  require("conform").format({
+    range = {
+      start = { start_pos[2], 0 },
+      ["end"] = { end_pos[2] + 1, 0 },
+    },
+  })
+end
+
+vim.api.nvim_set_keymap("n", "==", ":lua FormatCurrentLine()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "=", ":lua FormatSelection()<CR>", { noremap = true, silent = true })
