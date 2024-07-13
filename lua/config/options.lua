@@ -21,3 +21,5 @@ opt.tabstop = 4
 --     notify = false,
 --   },
 -- })
+
+vim.g.lazyvim_php_lsp = "intelephense"
