@@ -31,26 +31,34 @@ vim.keymap.set("n", "<Leader>ms", MiniMap.toggle_side)
 vim.keymap.set("n", "<Leader>mt", MiniMap.toggle)
 
 -- 按行格式化
-function FormatCurrentLine()
-  local pos = vim.api.nvim_win_get_cursor(0)
+function FormatRange(start_line, end_line)
   require("conform").format({
     range = {
-      start = { pos[1], 0 },
-      ["end"] = { pos[1] + 1, 0 },
+      start = { start_line, 0 },
+      ["end"] = { end_line + 1, 0 },
     },
   })
 end
 
-function FormatSelection()
-  local start_pos = vim.fn.getpos("'<")
-  local end_pos = vim.fn.getpos("'>")
-  require("conform").format({
-    range = {
-      start = { start_pos[2], 0 },
-      ["end"] = { end_pos[2] + 1, 0 },
-    },
-  })
+-- 获取计数并调用 FormatRange
+function FormatWithCount(type)
+  local start_line, end_line
+
+  if type == "line" then
+    start_line = vim.fn.line("'[")
+    end_line = vim.fn.line("']")
+  elseif type == "visual" then
+    start_line = vim.fn.line("'<")
+    end_line = vim.fn.line("'>")
+  else
+    start_line = vim.fn.line("'[")
+    end_line = vim.fn.line("']")
+  end
+
+  FormatRange(start_line, end_line)
 end
 
-vim.api.nvim_set_keymap("n", "==", ":lua FormatCurrentLine()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("v", "=", ":lua FormatSelection()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "=", ":set operatorfunc=v:lua.FormatWithCount<CR>g@", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "=gg", ":lua FormatRange(1,vim.fn.line('.'))<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "=", ":<C-u>lua FormatWithCount('visual')<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "==", ":lua FormatWithCount('line')<CR>", { noremap = true, silent = true })
