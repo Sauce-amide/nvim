@@ -41,9 +41,10 @@ return {
   {
     "lewis6991/gitsigns.nvim",
     keys = {
-      { "<leader>xg", ":Gitsigns setloclist<cr>", mode = { "n" }, desc = "show gitloclist" },
+      { "<leader>xg", ":Gitsigns setloclist<cr>",    mode = { "n" }, desc = "show gitloclist" },
       -- { "<leader>go", ":Gitsigns preview_hunk_inline<cr>", mode = { "n"}, desc = "Preview Hunk Inline" },
-      { "<leader>gc", ":Gclog<cr>", mode = { "n" }, desc = "Gclog" },
+      { "<leader>gn", ":Gitsigns toggle_linehl<cr>", mode = { "n" }, desc = "toggle_Gitsigns_linehl" },
+      { "<leader>gc", ":Gclog<cr>",                  mode = { "n" }, desc = "Gclog" },
     },
     opts = function(_, opts)
       opts.current_line_blame           = true -- Toggle with `:Gitsigns toggle_current_line_blame`
@@ -54,7 +55,7 @@ return {
         ignore_whitespace = false,
         virt_text_priority = 500,
       }
-      opts.linehl                       = true -- Toggle with `:Gitsigns toggle_linehl`
+      opts.linehl                       = false -- Toggle with `:Gitsigns toggle_linehl`
       opts.current_line_blame_formatter = '<author>, <author_time:%R> - <summary>'
     end,
   }

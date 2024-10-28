@@ -22,3 +22,13 @@ vim.api.nvim_create_autocmd('WinNew', {
     end)
   end,
 })
+
+-- 暂时无效
+-- vim.api.nvim_create_autocmd("dashboard", {
+--   -- pattern = "dashboard",
+--   -- command = "Neotree toggle",
+--   callback = function()
+--     --弹出消息
+--     vim.notify("Dashboard opened\n")
+--   end,
+-- })

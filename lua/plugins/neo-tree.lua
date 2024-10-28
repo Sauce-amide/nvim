@@ -3,6 +3,7 @@ return {
   opts = function(_, opts)
     opts.window.width = 30
     opts.window.mappings = {
+      ["v"] = "open_vsplit",
       ["oc"] = "none",
       ["od"] = "none",
       ["og"] = "none",

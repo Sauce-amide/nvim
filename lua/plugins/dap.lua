@@ -22,12 +22,18 @@ return {
         -- dapui.open({})
       end
       dap.listeners.before.event_terminated["dapui_config"] = function()
-        dapui.close({})
+        -- dapui.close({})
       end
       dap.listeners.before.event_exited["dapui_config"] = function()
-        dapui.close({})
+        -- dapui.close({})
       end
     end,
+  },
+  {
+    "LiadOz/nvim-dap-repl-highlights",
+    opts = function()
+      require('nvim-dap-repl-highlights').setup()
+    end
   },
   {
     "mfussenegger/nvim-dap",
@@ -42,6 +48,15 @@ return {
       { "<leader>dr", function() require("dap").repl.toggle({height = 15}) end, desc = "Toggle REPL" },
     },
     opts = function()
+      require("dap").configurations.python = {
+        {
+          type = "python",
+          request = "launch",
+          name = "Launch my file",
+          program = "${file}",
+          cwd = vim.fn.getcwd(),
+        }
+      }
       table.insert(require("dap").configurations.go, 1,
         {
           type = "go",

@@ -36,13 +36,13 @@ function ToggleBlame()
         vim.cmd('Git blame')
         -- scrollbind 设置
         vim.api.nvim_set_current_win(current_win)
-        -- vim.wo[GetFileTypeWin('fugitiveblame')].scrollbind = not vim.wo[GetFileTypeWin('fugitiveblame')].scrollbind
-        -- vim.wo[current_win].scrollbind = true
+        vim.wo[GetFileTypeWin('fugitiveblame')].scrollbind = true
+        vim.wo[current_win].scrollbind = true
     end
 end
 
 -- 为普通模式绑定一个键映射，调用 ToggleBlame 函数
-vim.keymap.set('n', '<leader>gb', ':lua ToggleBlame()<CR>:lua ToggleScrollbindForAllWindows()<CR>', {noremap = true, silent = true})
+vim.keymap.set('n', '<leader>gb', ':lua ToggleBlame()<CR>', {noremap = true, silent = true})
 -- vim.keymap.set('n', '<leader>gb', ':Git blame<CR>', { noremap = true, silent = true })
 
 -- 交换 gi 和 gI 的功能
@@ -125,7 +125,7 @@ function SetScrollbindForAllWindows(scrollbind)
   for _, win in ipairs(vim.api.nvim_list_wins()) do
     local buf = vim.api.nvim_win_get_buf(win)
     local filetype = vim.bo[buf].filetype
-    if filetype ~= 'neo-tree' and filetype ~= 'trouble' then
+    if filetype ~= 'neo-tree' and filetype ~= 'trouble' and filetype ~= 'aerial' then
       vim.wo[win].scrollbind = scrollbind
     end
   end
@@ -139,3 +139,13 @@ end
 
 -- 设置键绑定
 vim.keymap.set('n', '<leader>sb', ':lua ToggleScrollbindForAllWindows()<CR>', { noremap = true, silent = true })
+
+
+
+
+------------------------------------hop.nvim 快捷键设置 --------------------------------------
+-- local hop = require('hop-extensions')
+-- local directions = require('hop.hint').HintDirection
+-- vim.keymap.set('', 'f', function()
+--   hop.ts.hint_textobjects({ direction = directions.AFTER_CURSOR, current_line_only = true })
+-- end, {remap=true})

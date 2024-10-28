@@ -22,10 +22,10 @@ return {
       })
     end,
   },
-  { "Mofiqul/vscode.nvim",   lazy = false, },
-  { "catppuccin/nvim",       lazy = false, },
-  { "shaunsingh/nord.nvim" },
-  { "folke/tokyonight.nvim", lazy = false,       opts = { style = "moon" }, },
-  { "navarasu/onedark.nvim", lazy = false,       opts = { style = "warmer" }, },
-  { "rose-pine/neovim",      name = "rose-pine", },
+  -- { "Mofiqul/vscode.nvim",   lazy = false, },
+  -- { "catppuccin/nvim",       lazy = false, },
+  -- { "shaunsingh/nord.nvim" },
+  -- { "folke/tokyonight.nvim", lazy = false,       opts = { style = "moon" }, },
+  -- { "navarasu/onedark.nvim", lazy = false,       opts = { style = "warmer" }, },
+  -- { "rose-pine/neovim",      name = "rose-pine", },
 }
