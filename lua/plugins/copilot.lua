@@ -1,27 +1,27 @@
 return {
   "zbirenbaum/copilot.lua",
   keys = {
-    -- {
-    --   "<c-j>",
-    --   function()
-    --     require("copilot.suggestion").next()
-    --   end,
-    --   mode = { "i" },
-    -- },
-    -- {
-    --   "<c-k>",
-    --   function()
-    --     require("copilot.suggestion").prev()
-    --   end,
-    --   mode = { "i" },
-    -- },
-    -- {
-    --   "<c-l>",
-    --   function()
-    --     require("copilot.suggestion").accept_line()
-    --   end,
-    --   mode = { "i" },
-    -- },
+    {
+      "<m-j>",
+      function()
+        require("copilot.suggestion").next()
+      end,
+      mode = { "i" },
+    },
+    {
+      "<m-k>",
+      function()
+        require("copilot.suggestion").prev()
+      end,
+      mode = { "i" },
+    },
+    {
+      "<m-l>",
+      function()
+        require("copilot.suggestion").accept_line()
+      end,
+      mode = { "i" },
+    },
   },
   --   cmd = "Copilot",
   --   build = ":Copilot auth",
